@@ -1,22 +1,23 @@
 <style scoped lang="less">
   @import "../../assets/color.less";
-  .Home {
-    width: 1200px;
-    height: 500px;
-    margin: 0 auto;
-    background-color: #fff;
+  .ECharts {
+    height: 600px;
   }
 </style>
 
 <template>
-  <div class="Home">
-    <Button type="text" @click="jump('ECharts')">eCharts</Button>
-  </div>
+  <Layout class="ECharts">
+    <Slider></Slider>
+    <Content>
+      <router-view/>
+    </Content>
+  </Layout>
 </template>
 
 <script>
+  import Slider from './component/Sider'
   export default {
-    name: 'Home',
+    name: 'ECharts',
     data () {
       return {
         spinShow: false,
@@ -28,11 +29,11 @@
       }
     },
     methods: {
-      jump (name) {
-        this.$router.push(name)
-      }
     },
     components: {
+      Slider
+    },
+    mounted () {
     }
   }
 </script>

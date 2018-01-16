@@ -9,6 +9,9 @@ import iView from 'iview'       //  iview
 import 'iview/dist/styles/iview.css'  //  iview 样式表
 import VueI18n from 'vue-i18n'    //  vue国际化
 import locale from 'iview/dist/locale/en-US'   //  国际化
+import ECharts from 'echarts'  // ECharts
+import EChartsGl from 'echarts-gl'  //  EChartsGl
+
 //  import Vuex from 'vuex'
 import vueg from 'vueg'   //  转场动画
 import 'vueg/css/transition-min.css' //  转场动画样式表
@@ -17,6 +20,7 @@ import 'swiper/dist/css/swiper.css'  //  swiper样式表
 
 import '../static/hover.css'   //  hover样式表
 import mydata from './assets/data/data' //  数据
+import bus from './bus'
 
 Vue.use(iView, { locale })
 Vue.use(VueI18n)
@@ -25,6 +29,10 @@ Vue.use(VueAwesomeSwiper)
 Vue.use(vueg, router)
 
 Vue.prototype.mydata = mydata
+Vue.prototype.$echarts = ECharts
+Vue.prototype.$bus = bus
+Vue.prototype.$echartsgl = EChartsGl
+
 /* 国际化 */
 const i18n = new VueI18n({
   locale: 'CN',    // 语言标识

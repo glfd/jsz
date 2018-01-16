@@ -1,23 +1,39 @@
 <template>
   <div id="app">
-    <router-view/>
+    <Layout>
+      <Header>Header</Header>
+      <Content>
+          <router-view class="main"/>
+      </Content>
+      <Footer>Footer</Footer>
+    </Layout>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      spinShow: false,
+      vuegConfig: {  //  进场动画
+        forwardAnim: 'zoomIn',  //  options所有配置可以写在这个对象里，会覆盖全局的配置
+        backAnim: 'zoomOut',
+        disable: false              //  对于嵌套路由，默认为关闭动画，需要在组件的data.vuegConfig中配置disable为false启用
+      }
+    }
+  }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  width: 100%;
-  height: 100%;
-}
+<style scoped lang="less">
+  @import "./assets/color.less";
+  #app {
+    color: #2c3e50;
+    width: 100%;
+    height: 100%;
+    .main{
+      background-color: white;
+    }
+  }
 </style>

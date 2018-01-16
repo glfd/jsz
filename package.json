@@ -1,5 +1,5 @@
 {
-  "name": "glfdgwv1.0",
+  "name": "fzmjsz",
   "version": "1.0.0",
   "description": "格兰菲德官网重构1.0",
   "author": "房召谋 <1079336302@qq.com>",
@@ -14,6 +14,8 @@
     "axios": "^0.17.1",
     "better-scroll": "^1.6.3",
     "clipboard": "^1.7.1",
+    "echarts": "^3.8.5",
+    "echarts-gl": "^1.0.0-beta.6",
     "hover.css": "^2.2.1",
     "iview": "^2.8.0",
     "js-cookie": "^2.2.0",
