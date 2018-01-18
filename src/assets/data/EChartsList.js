@@ -18,5 +18,9 @@ module.exports = [
   {
     label: '曲线+起停',
     value: 'Profile'
+  },
+  {
+    label: '自定曲线',
+    value: 'Customize'
   }
 ]

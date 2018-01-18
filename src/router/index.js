@@ -39,7 +39,13 @@ export default new Router({
           path: '/profile',
           name: 'Profile',
           component: (resolve) => require(['../page/ECharts/component/Profile.vue'], resolve)
+        },
+        {
+          path: '/customize',
+          name: 'Customize',
+          component: (resolve) => require(['../page/ECharts/component/Customize.vue'], resolve)
         }
+
       ]
     }
   ]
