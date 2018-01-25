@@ -2,9 +2,10 @@
   @import "../../assets/color.less";
   .Home {
     width: 1200px;
-    height: 500px;
     margin: 0 auto;
+    height: 2000px;
     background-color: #fff;
+    min-height: 100%;
   }
 </style>
 

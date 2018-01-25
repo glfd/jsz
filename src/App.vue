@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <Layout>
+    <Layout style="height: 100%;">
       <Header>Header</Header>
-      <Content>
-          <router-view class="main"/>
+      <Content style="position: relative;">
+        <div class="main">
+          <router-view/>
+        </div>
       </Content>
-      <Footer>Footer</Footer>
+      <!--<Footer style="box-shadow: 0px -1px 4px #eee;">Footer</Footer>-->
     </Layout>
   </div>
 </template>
@@ -33,7 +35,12 @@ export default {
     width: 100%;
     height: 100%;
     .main{
-      background-color: white;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: auto;
     }
   }
 </style>
