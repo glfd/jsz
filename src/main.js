@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 
 import '../static/normalize.css'   //  样式表初始化
+import '../static/animate.css' // 动画库
 import iView from 'iview'       //  iview
 import 'iview/dist/styles/iview.css'  //  iview 样式表
 import VueI18n from 'vue-i18n'    //  vue国际化

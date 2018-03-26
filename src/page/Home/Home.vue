@@ -9,10 +9,10 @@
   }
 </style>
 
-<template>
-  <div class="Home">
-    <Button type="text" @click="jump('ECharts')">eCharts</Button>
-  </div>
+<template lang="jade">
+  .Home
+    Button(type="text", @click="jump('Test')") TestPage
+    Button(type="text", @click="jump('ECharts')") EChartsPage
 </template>
 
 <script>

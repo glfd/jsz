@@ -11,6 +11,11 @@ export default new Router({
       component: (resolve) => require(['../page/Home/Home.vue'], resolve)
     },
     {
+      path: '/test',
+      name: 'Test',
+      component: (resolve) => require(['../page/Test/Test.vue'], resolve)
+    },
+    {
       path: '/echarts',
       name: 'ECharts',
       component: (resolve) => require(['../page/ECharts/ECharts.vue'], resolve),
