@@ -135,6 +135,7 @@
         handler: function (val, oldVal) {
           if (val) {
             this.$emit('input', true)
+            console.log(val)
             document.getElementById(this.modelId)
           } else {
             this.$emit('input', false)

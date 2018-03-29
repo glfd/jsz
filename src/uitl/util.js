@@ -1,5 +1,6 @@
 import axios from 'axios'
 import qs from 'qs' // 模块
+import { Message, Notice } from 'iview'
 let CancelToken = axios.CancelToken
 let source = CancelToken.source()
 
@@ -7,56 +8,46 @@ let util = {}
 /*
 * 请求封装
 * */
-// const ajaxUrl = 'http://118.31.76.167/SZIOT/'
-const ajaxUrl = 'http://192.168.1.188:8888/'
-// const ajaxUrl = 'http://192.168.1.188:8888/SZIOT/'
+const ajaxUrl = 'http://192.168.1.188:8888/alinkx/'  // url前缀
 util.ajaxUrl = ajaxUrl
 util.ajax = axios.create({
   baseURL: ajaxUrl,
-  timeout: 5000,
-  headers: {'X-Requested-With': 'XMLHttpRequest'},  // `headers` 是即将被发送的自定义请求头
-  transformRequest: [data => {  // `transformRequest` 允许在向服务器发送前，修改请求数据
-    return qs.stringify(data)
-  }]
+  timeout: 10000,  // 超时
+  responseType: 'json', // 返回数据类型
+  withCredentials: true,
+  headers: {'X-Requested-With': 'XMLHttpRequest'}
 })
-util.ajax.defaults.withCredentials = true
-util.get = (urlstr, data, success, error) => {
-  util.ajax.get(urlstr, {
-    params: data,
-    cancelToken: source.token
-  })
-    .then(response => {
-      success(response)
-    })
-    .catch(err => {
-      error(err)
-    })
-}
-util.post = (urlstr, data, success, error) => {
-  util.ajax.post(urlstr, data)
-    .then(response => {
-      success(response)
-    })
-    .catch(err => {
-      error(err)
-    })
-}
-/*
-* 并发请求
-* */
-util.all = (url, data, success, error) => {
-  let https = []
-  for (let i = 0; i < url.length; i++) {
-    let urlstr = url[i]
-    let http = util.ajax.post(urlstr, data[i])
-    https.push(http)
+// POST传参序列化(添加请求拦截器)
+util.ajax.interceptors.request.use(
+  config => {
+    if (
+      config.method === "post" ||
+      config.method === "put" ||
+      config.method === "delete"
+    ) {
+      // 序列化
+      config.data = qs.stringify(config.data);
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error.data.error.message);
   }
-  util.ajax.all(https)
-    .then(axios.spread(success))
-    .catch((err) => {
-      error(err)
+)
+util.ajax.interceptors.response.use(
+  res => {
+    console.log(res, 'interceptors')
+    return res.data.data;
+  },
+  error => {
+    console.log(error, 'util-response')
+    Notice.error({
+      title: '服务器错误',
+      desc: error
     })
-}
+    return Promise.resolve(error.data.error);
+  }
+)
 /*
 *websocket
 * */

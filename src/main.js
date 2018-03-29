@@ -18,6 +18,7 @@ import vueg from 'vueg'   //  转场动画
 import 'vueg/css/transition-min.css' //  转场动画样式表
 import VueAwesomeSwiper from 'vue-awesome-swiper'  // swiper插件
 import 'swiper/dist/css/swiper.css'  //  swiper样式表
+import fHttp from './uitl/fHttp'
 
 import '../static/hover.css'   //  hover样式表
 import mydata from './assets/data/data' //  数据
@@ -33,6 +34,7 @@ Vue.prototype.mydata = mydata
 Vue.prototype.$echarts = ECharts
 Vue.prototype.$bus = bus
 Vue.prototype.$echartsgl = EChartsGl
+Vue.prototype.http = fHttp
 
 /* 国际化 */
 const i18n = new VueI18n({

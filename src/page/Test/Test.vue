@@ -31,7 +31,8 @@
   .Test 111
     f-model(v-model="fModel", width="80%", @resize="modelResize")
       // p 测试
-      iframe#myIframe(src="http://localhost:8081/#/bar3d")
+      div(style="height: 1300px")
+      // iframe#myIframe(src="http://localhost:8081/#/bar3d")
     Button(@click="() => {this.fModel = !this.fModel}") 点击
     pre
       code(v-text="rawHtml")
